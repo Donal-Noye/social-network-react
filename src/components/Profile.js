@@ -9,7 +9,6 @@ export default function Profile() {
           <img className="w-full h-full object-cover" src="https://placehold.co/70" alt=""/>
         </div>
         <h2 className="text-2xl">Donal Noye</h2>
-        <p>qwefgfggggzx</p>
       </div>
     </div>
   )
