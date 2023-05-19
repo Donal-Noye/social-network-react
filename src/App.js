@@ -1,20 +1,81 @@
 import './App.css';
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import Profile from "./components/Profile";
+import Navbar from "./components/Navbar/Navbar";
+import {BrowserRouter, Route, Router, Routes, useLocation, useNavigate, useParams} from 'react-router-dom';
+// import DialogsContainer from "./components/Dialogs/DialogsContainer";
+// import UsersContainer from "./components/Users/UsersContainer";
+// import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
+import {lazy, Suspense, useEffect} from "react";
+import {connect, Provider} from "react-redux";
+import {compose} from "redux";
+import {initializeApp} from "./redux/app-reducer";
+import Preloader from "./components/common/Preloader";
+import store from "./redux/redux-store";
 
-function App() {
-  return (
-    <div className="bg-black h-screen	text-white font-poppins">
-      <div className="mx-6 md:max-w-6xl md:mx-auto grid grid-cols-[3fr_10fr] gap-6 grid-rows-[auto_1fr]">
-        <Header />
-        <Navbar />
-        <main className="content">
-          <Profile />
-        </main>
-      </div>
-    </div>
-  );
+const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'));
+const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
+const ProfileContainer = lazy(() => import('./components/Profile/ProfileContainer'));
+
+
+function withRouter(Component) {
+	function ComponentWithRouterProp(props) {
+		let location = useLocation();
+		let navigate = useNavigate();
+		let params = useParams();
+		return (
+			<Component
+				{...props}
+				router={{location, navigate, params}}
+			/>
+		);
+	}
+
+	return ComponentWithRouterProp;
 }
 
-export default App;
+
+
+function App(props) {
+	useEffect(() => {
+		props.initializeApp();
+	})
+
+	if (!props.initialized) return <Preloader />
+
+	return (
+		<div className="mx-6 md:max-w-6xl md:mx-auto wrapper pb-10 grid grid-cols-[3fr_10fr] gap-6 grid-rows-[auto_1fr]">
+			<HeaderContainer/>
+			<Navbar/>
+			<main className="content">
+				<Suspense fallback={<Preloader />}>
+					<Routes>
+						<Route path='/profile/:userId?' element={<ProfileContainer />}/>
+						<Route path='/profile' element={<ProfileContainer />}/>
+						<Route path="/dialogs/*" element={<DialogsContainer />}/>
+						<Route path="/users" element={<UsersContainer />}/>
+						<Route path="/login" element={<Login />}/>
+					</Routes>
+				</Suspense>
+			</main>
+		</div>
+	);
+}
+
+const mapStateToProps = (state) => ({
+	initialized: state.app.initialized
+});
+
+const AppContainer = compose(
+	withRouter,
+	connect(mapStateToProps, {initializeApp}))(App)
+
+const SocialNetworkApp = props => {
+	return <BrowserRouter>
+		<Provider store={store}>
+			<AppContainer />
+		</Provider>
+	</BrowserRouter>
+}
+
+export default SocialNetworkApp

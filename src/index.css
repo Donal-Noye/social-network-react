@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-dark-blue text-white font-poppins;
+}
+
+aside .active {
+    @apply bg-light-blue;
+}
+
+.dialogs .active {
+    @apply bg-light-blue;
+}
+
+.messages div:nth-child(even) {
+    @apply flex justify-end
+}

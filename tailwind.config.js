@@ -6,11 +6,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'black': '#393646',
-        'brown': '#4F4557',
+        'black': '#191C21',
+        'dark-blue': '#212833',
+        'light-blue': '#4E5D78'
       },
       fontFamily: {
-        'poppins': 'Poppins'
+        'poppins': ['Poppins', 'sans-serif']
       }
     },
   },
