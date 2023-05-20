@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {HashRouter, Route, Routes, useLocation, useNavigate, useParams} from 'react-router-dom';
+import {BrowserRouter, HashRouter, Route, Routes, useLocation, useNavigate, useParams} from 'react-router-dom';
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {lazy, Suspense, useEffect} from "react";
@@ -68,11 +68,11 @@ const AppContainer = compose(
 	connect(mapStateToProps, {initializeApp}))(App)
 
 const SocialNetworkApp = () => {
-	return <HashRouter basename={process.env.PUBLIC_URL}>
+	return <BrowserRouter basename={process.env.PUBLIC_URL}>
 		<Provider store={store}>
 			<AppContainer />
 		</Provider>
-	</HashRouter>
+	</BrowserRouter>
 }
 
 export default SocialNetworkApp
