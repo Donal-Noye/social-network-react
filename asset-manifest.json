@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "https://donal-noye.github.io/static/css/main.db6c9254.css",
-    "main.js": "https://donal-noye.github.io/static/js/main.66b04fe5.js",
-    "static/js/726.9355289e.chunk.js": "https://donal-noye.github.io/static/js/726.9355289e.chunk.js",
-    "static/js/992.bb7aae5c.chunk.js": "https://donal-noye.github.io/static/js/992.bb7aae5c.chunk.js",
-    "static/js/78.0785dd23.chunk.js": "https://donal-noye.github.io/static/js/78.0785dd23.chunk.js",
-    "static/js/787.eaaab13d.chunk.js": "https://donal-noye.github.io/static/js/787.eaaab13d.chunk.js",
-    "static/js/402.c0fcd4d2.chunk.js": "https://donal-noye.github.io/static/js/402.c0fcd4d2.chunk.js",
-    "static/js/481.feb3ff48.chunk.js": "https://donal-noye.github.io/static/js/481.feb3ff48.chunk.js",
-    "static/media/wallpaper_cliff_1920x1080.jpg": "https://donal-noye.github.io/static/media/wallpaper_cliff_1920x1080.63042aeed0859c128be6.jpg",
-    "index.html": "https://donal-noye.github.io/index.html",
-    "main.db6c9254.css.map": "https://donal-noye.github.io/static/css/main.db6c9254.css.map",
-    "main.66b04fe5.js.map": "https://donal-noye.github.io/static/js/main.66b04fe5.js.map",
-    "726.9355289e.chunk.js.map": "https://donal-noye.github.io/static/js/726.9355289e.chunk.js.map",
-    "992.bb7aae5c.chunk.js.map": "https://donal-noye.github.io/static/js/992.bb7aae5c.chunk.js.map",
-    "78.0785dd23.chunk.js.map": "https://donal-noye.github.io/static/js/78.0785dd23.chunk.js.map",
-    "787.eaaab13d.chunk.js.map": "https://donal-noye.github.io/static/js/787.eaaab13d.chunk.js.map",
-    "402.c0fcd4d2.chunk.js.map": "https://donal-noye.github.io/static/js/402.c0fcd4d2.chunk.js.map",
-    "481.feb3ff48.chunk.js.map": "https://donal-noye.github.io/static/js/481.feb3ff48.chunk.js.map"
+    "main.css": "/social-network-react/static/css/main.db6c9254.css",
+    "main.js": "/social-network-react/static/js/main.117c7873.js",
+    "static/js/726.9355289e.chunk.js": "/social-network-react/static/js/726.9355289e.chunk.js",
+    "static/js/992.bb7aae5c.chunk.js": "/social-network-react/static/js/992.bb7aae5c.chunk.js",
+    "static/js/78.0785dd23.chunk.js": "/social-network-react/static/js/78.0785dd23.chunk.js",
+    "static/js/787.eaaab13d.chunk.js": "/social-network-react/static/js/787.eaaab13d.chunk.js",
+    "static/js/402.c0fcd4d2.chunk.js": "/social-network-react/static/js/402.c0fcd4d2.chunk.js",
+    "static/js/481.feb3ff48.chunk.js": "/social-network-react/static/js/481.feb3ff48.chunk.js",
+    "static/media/wallpaper_cliff_1920x1080.jpg": "/social-network-react/static/media/wallpaper_cliff_1920x1080.63042aeed0859c128be6.jpg",
+    "index.html": "/social-network-react/index.html",
+    "main.db6c9254.css.map": "/social-network-react/static/css/main.db6c9254.css.map",
+    "main.117c7873.js.map": "/social-network-react/static/js/main.117c7873.js.map",
+    "726.9355289e.chunk.js.map": "/social-network-react/static/js/726.9355289e.chunk.js.map",
+    "992.bb7aae5c.chunk.js.map": "/social-network-react/static/js/992.bb7aae5c.chunk.js.map",
+    "78.0785dd23.chunk.js.map": "/social-network-react/static/js/78.0785dd23.chunk.js.map",
+    "787.eaaab13d.chunk.js.map": "/social-network-react/static/js/787.eaaab13d.chunk.js.map",
+    "402.c0fcd4d2.chunk.js.map": "/social-network-react/static/js/402.c0fcd4d2.chunk.js.map",
+    "481.feb3ff48.chunk.js.map": "/social-network-react/static/js/481.feb3ff48.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.db6c9254.css",
-    "static/js/main.66b04fe5.js"
+    "static/js/main.117c7873.js"
   ]
 }
