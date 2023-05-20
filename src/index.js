@@ -3,20 +3,12 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom/client";
 import SocialNetworkApp from "./App";
-import {createHashRouter, RouterProvider} from "react-router-dom";
-
-const router = createHashRouter([
-	{
-		path: "/*",
-		element: <SocialNetworkApp />,
-	}
-]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<SocialNetworkApp/>
 	</React.StrictMode>
 );
 
