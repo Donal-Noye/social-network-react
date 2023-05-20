@@ -1,4 +1,4 @@
-import {Component, useEffect} from "react";
+import {useEffect} from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getStatus, getUserProfile, updateStatus} from "../../redux/profile-reducer";
@@ -45,7 +45,7 @@ function ProfileContainer(props) {
 			: <Profile {...props}
 			           profile={props.profile}
 			           status={props.status}
-			           updateStatus={props.updateStatus} />}
+			           updateStatus={props.updateStatus}/>}
 	</>
 }
 

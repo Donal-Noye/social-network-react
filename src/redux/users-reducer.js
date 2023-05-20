@@ -1,6 +1,4 @@
-import {authAPI, profileAPI, usersAPI} from "../api/api";
-import {setAuthUserData} from "./auth-reducer";
-import {setUserProfile} from "./profile-reducer";
+import {usersAPI} from "../api/api";
 import {updateObjectInArray} from "../utils/object-helpers";
 
 const FOLLOW = 'FOLLOW';
