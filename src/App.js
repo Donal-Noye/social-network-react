@@ -85,11 +85,11 @@ const AppContainer = compose(
 	connect(mapStateToProps, {initializeApp}))(App)
 
 const SocialNetworkApp = () => {
-	return <BrowserRouter>
+	return <HashRouter>
 		<Provider store={store}>
 			<AppContainer />
 		</Provider>
-	</BrowserRouter>
+	</HashRouter>
 }
 
 export default SocialNetworkApp
