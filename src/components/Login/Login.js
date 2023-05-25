@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
 
-function Login({ isAuth, login }) {
+function Login({ isAuth, login, captchaUrl }) {
 	if (isAuth) {
 		return <Navigate to={"/profile"} />
 	}
@@ -18,7 +18,8 @@ function Login({ isAuth, login }) {
 				initialValues={{
 					email: "",
 					password: "",
-					rememberMe: false
+					rememberMe: false,
+					captcha: ""
 				}}
 				validate={values => {
 					const errors = {};
@@ -38,7 +39,7 @@ function Login({ isAuth, login }) {
 						.required("Required")
 				})}
 				onSubmit={(values, {setSubmitting, setFieldError, setStatus}) => {
-					login(values.email, values.password, values.rememberMe, setSubmitting, setFieldError, setStatus)
+					login(values.email, values.password, values.rememberMe, values.captcha, setSubmitting, setFieldError, setStatus)
 					setSubmitting(false);
 				}}
 			>
@@ -71,16 +72,32 @@ function Login({ isAuth, login }) {
 
 						{/*Checkbox*/}
 						<div>
-							<div className="flex items-center gap-3">
+							<div className="checkbox">
 								<Field
-									className="cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
 									type={'checkbox'}
 									name={'rememberMe'}
 									id='rememberMe'/>
-								<label className="cursor-pointer text-sm font-medium text-white/75" htmlFor={'rememberMe'}>Remember Me</label>
+								<label className={"text-white/75"} htmlFor={'rememberMe'}>Remember Me</label>
 							</div>
 						</div>
-						<p className="text-red-500">{status}</p>
+						{status && <p className="text-red-500">{status}</p>}
+						{captchaUrl &&
+							<div className={"w-[80%] my-0 mx-auto border-t-4 border-light-blue"}>
+								<div className={"mb-2"}>
+									<img className={"object-cover w-full h-[90px]"} src={captchaUrl} alt={status} />
+								</div>
+
+								<div>
+									<Field
+										className={"w-full"}
+										name={'captcha'}
+										isValid={isValid}
+										component={MyInput}
+									/>
+								</div>
+
+							</div>
+						}
 						<MyButton className="cursor-pointer justify-center" disabled={isSubmitting}>Login</MyButton>
 					</Form>
 				)}
@@ -90,6 +107,7 @@ function Login({ isAuth, login }) {
 }
 
 const mapStateToProps = (state) => ({
+	captchaUrl: state.auth.captchaUrl,
 	isAuth: state.auth.isAuth
 });
 

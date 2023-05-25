@@ -29,6 +29,7 @@ const MyPosts = memo(props => {
 						<Field
 							component={MyTextarea}
 							name={"newPostText"}
+							placeholder={"Write your thoughts here..."}
 						/>
 						<MyButton className="mt-4">Publish post</MyButton>
 					</Form>

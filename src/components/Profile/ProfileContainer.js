@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getStatus, getUserProfile, updateStatus} from "../../redux/profile-reducer";
+import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from "../../redux/profile-reducer";
 import Preloader from "../common/Preloader";
 import {useLocation, useNavigate, useParams,} from "react-router-dom";
 import {compose} from "redux";
@@ -25,8 +25,9 @@ function withRouter(Component) {
 function ProfileContainer(props) {
 	let navigate = useNavigate();
 
-	useEffect(() => {
+	const refreshProfile = () => {
 		let userId = props.router.params.userId;
+
 		if (!userId) {
 			userId = props.authorizedUserId;
 
@@ -37,7 +38,15 @@ function ProfileContainer(props) {
 
 		props.getUserProfile(userId)
 		props.getStatus(userId)
+	}
+
+	useEffect(() => {
+		refreshProfile()
 	})
+
+	useEffect(() => {
+		refreshProfile()
+	}, [props.router.params.userId])
 
 	return <>
 		{!props.profile
@@ -45,7 +54,11 @@ function ProfileContainer(props) {
 			: <Profile {...props}
 			           profile={props.profile}
 			           status={props.status}
-			           updateStatus={props.updateStatus}/>}
+			           updateStatus={props.updateStatus}
+			           isOwner={!props.router.params.userId}
+			           savePhoto={props.savePhoto}
+			           saveProfile={props.saveProfile}
+			/>}
 	</>
 }
 
@@ -56,6 +69,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-	connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
+	connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto, saveProfile}),
 	withRouter
 )(ProfileContainer)

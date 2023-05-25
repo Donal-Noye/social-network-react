@@ -13,7 +13,7 @@ export default function User(
 			<NavLink to={`/profile/${user.id}`} className="grid grid-cols-[60px_1fr] items-center gap-5 mb-6">
 				<div className="rounded-full w-[60px] h-[60px] overflow-hidden">
 					<img className="w-full h-full object-cover"
-					     src={user.photos.small ? user.photos.small : defaultAvatar} alt=""/>
+					     src={user.photos.small || defaultAvatar} alt=""/>
 				</div>
 				<div className="overflow-hidden">
 					<h4 className="text-[18px] text-ellipsis overflow-hidden">{user.name}</h4>

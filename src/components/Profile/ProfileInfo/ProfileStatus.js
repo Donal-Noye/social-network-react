@@ -27,12 +27,14 @@ const ProfileStatus = (props) => {
 		<>
 			{!editMode &&
 				<div className="flex items-center gap-2">
-					<p className="text-sm text-gray-400">{props.status || "-----"}</p>
-					<div onClick={activateEditMode}
-					     className="p-1.5 -m-1.5 cursor-pointer rounded-full hover:bg-light-blue/50 transition-colors"
-					>
-						<HiPencil size={18}/>
-					</div>
+					<p className={`${props.className} text-sm text-gray-400`}>{props.status || "-----"}</p>
+					{props.isOwner &&
+						<div onClick={activateEditMode}
+              className="p-1.5 -m-1.5 cursor-pointer rounded-full hover:bg-light-blue/50 transition-colors"
+						>
+							<HiPencil size={18}/>
+						</div>
+					}
 				</div>
 			}
 			{editMode &&

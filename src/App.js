@@ -1,6 +1,15 @@
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {BrowserRouter, HashRouter, Route, Routes, useLocation, useNavigate, useParams} from 'react-router-dom';
+import {
+	BrowserRouter,
+	HashRouter,
+	Navigate,
+	Route,
+	Routes,
+	useLocation,
+	useNavigate,
+	useParams
+} from 'react-router-dom';
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {lazy, Suspense, useEffect} from "react";
@@ -31,12 +40,19 @@ function withRouter(Component) {
 	return ComponentWithRouterProp;
 }
 
-
-
 function App(props) {
+	const catchAllUnhandledErrors = (promiseRejectionEvent) => {
+		console.log("Some error occured")
+	}
+
 	useEffect(() => {
 		props.initializeApp();
+		window.addEventListener("unhandledrejection", catchAllUnhandledErrors)
 	})
+
+	useEffect(() => {
+		window.removeEventListener("unhandledrejection", catchAllUnhandledErrors)
+	}, [])
 
 	if (!props.initialized) return <Preloader />
 
@@ -47,11 +63,12 @@ function App(props) {
 			<main className="content">
 				<Suspense fallback={<Preloader />}>
 					<Routes>
+						<Route path="/" element={<Navigate to="/profile" />} />
 						<Route path='/profile/:userId?' element={<ProfileContainer />}/>
-						<Route path='/profile' element={<ProfileContainer />}/>
 						<Route path="/dialogs/*" element={<DialogsContainer />}/>
 						<Route path="/users" element={<UsersContainer />}/>
 						<Route path="/login" element={<Login />}/>
+						<Route path="*" element={<div>404 NOT FOUND</div>}/>
 					</Routes>
 				</Suspense>
 			</main>
@@ -68,11 +85,11 @@ const AppContainer = compose(
 	connect(mapStateToProps, {initializeApp}))(App)
 
 const SocialNetworkApp = () => {
-	return <HashRouter>
+	return <BrowserRouter>
 		<Provider store={store}>
 			<AppContainer />
 		</Provider>
-	</HashRouter>
+	</BrowserRouter>
 }
 
 export default SocialNetworkApp
