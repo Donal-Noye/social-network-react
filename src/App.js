@@ -1,7 +1,6 @@
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import {
-	BrowserRouter,
 	HashRouter,
 	Navigate,
 	Route,
