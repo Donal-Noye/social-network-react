@@ -1,4 +1,4 @@
-## Samurai Social Network
+## Social Network
 
 #### Link where publishes this project: [https://maxim-saharov.github.io/ReactKamasutra](https://donal-noye.github.io/social-network-react/#/)
 
@@ -32,6 +32,6 @@ npm run start
 * React
 * Tailwind
 * React Hooks, Redux Thunk, HOC, Reselect, React Router
-* social-network.samuraijs.com API, Axios
+* API, Axios
 * Authorization, Captcha, Pagination
 
